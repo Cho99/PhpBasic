@@ -1,11 +1,9 @@
 <?php
-class HomeModel {
+class HomeModel extends DB {
     public function GetData() {
-        return "Data";
+       
     }
 
-    public function Sum($x, $y) {
-        return $x + $y;
-    }
+ 
 }
 ?>

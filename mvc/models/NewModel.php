@@ -1,7 +1,8 @@
 <?php
-class NewModel {
-    public function Show() {
-        return "Data";
+class NewModel extends DB {
+    public function GetNew() {
+        $qr = "SELECT * FROM news";
+        return mysqli_query($this->con, $qr);
     }
 }
 ?>

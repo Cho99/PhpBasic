@@ -1,8 +1,10 @@
 <?php
 class News extends Controller {
-    function SayHi() {
+    function show() {
        $model = $this->model("NewModel"); 
-       echo $model->Show();
+       $data = $model->GetNew();
+       $this->view("login", ["news" => $data]);
+
     }
 }
 ?>

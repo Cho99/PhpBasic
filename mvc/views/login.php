@@ -11,7 +11,11 @@
     <div class="container">
         <div class="imgcontainer">
             <h3>WellCome</h3>
-            <?php print_r ($data["arr"]) ?>
+            <?php 
+                while($row = mysqli_fetch_array($data["news"])){
+                    print_r ($row["title"]);
+                }
+            ?>
         </div> 
         <div class="login">
             <label for="uname"><b>Username</b></label>
