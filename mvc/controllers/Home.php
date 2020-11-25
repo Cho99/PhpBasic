@@ -2,7 +2,7 @@
 class Home extends Controller {
     function SayHi() {
        $model = $this->model("HomeModel");
-   
+       echo $model->GetData();
     }
 
     function show($x, $y) {
