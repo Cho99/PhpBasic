@@ -18,18 +18,28 @@
                     echo "Đăng ký thất bại";
                 }
             } ?>
+            <?php 
+                $email = '';
+                $password = '';
+                $check = false;
+                if(isset($_COOKIE['user'])|| isset($_COOKIE['password'])) {
+                    $email = $_COOKIE['user'];
+                    $password = $_COOKIE['password'];
+                    $check = true;
+                }
+            ?>
         </div> 
         <div class="login">
             <label for="email"><b>Email</b></label>
-            <input type="text" placeholder="Enter Email" name="email" required>
+            <input type="text" placeholder="Enter Email" name="email" value="<?php echo $email ?>" required>
 
             <label for="psw"><b>Password</b></label>
-            <input type="password" placeholder="Enter Password" name="password" required>
+            <input type="password" placeholder="Enter Password" name="password" value="<?php echo $password ?>" required>
 
             <button type="submit" name="btnLogin">Login</button>
             <label>
-            <input type="checkbox" checked="checked" name="remember"> Remember me
-            <a href="http://localhost/php/User/register">Dang Ky</a>
+            <input <?php echo $check?"checked":"" ?> type="checkbox" name="remember" value="1"> Remember me
+            <a href="http://localhost/php/User/register">Đăng Ký</a>
             </label>
         </div>
     </div>
