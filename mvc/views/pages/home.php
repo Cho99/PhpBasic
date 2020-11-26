@@ -1,6 +1,6 @@
 <div class="table_main">
     <h1>News</h1>
-    <a href="" class="button">Them Bai Viet</a>
+    <a href="http://localhost/php/News/addNew" class="button">Them Bai Viet</a>
     <table id="news">
         <tr>
             <th style="width: 10%; text-align:center;">ID</th>
