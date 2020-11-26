@@ -1,15 +1,15 @@
 <?php
 class Home extends Controller {
-    function SayHi() {
-       $model = $this->model("HomeModel");
-       echo $model->GetData();
+    public $NewModel;
+    
+    public function  __construct() {
+        //Model
+        $this->NewModel = $this->model("NewModel");
     }
-
-    function show($x, $y) {
-        $model = $this->model("HomeModel");
-        $arr = [1,2,3];
-        $sum = $model->Sum($x , $y);
-        $this->view("login",["data" => $sum, "arr" => $arr]);
+    function index() {
+       $this->view("layout", [
+           "page" => "home"
+        ]);
     }
 }
 ?>
