@@ -14,11 +14,11 @@
 
 
     <label for="psw"><b>Password</b></label>
-    <input type="password" placeholder="Enter Password" name="psw" id="psw" required>
+    <input type="password" placeholder="Enter Password" name="password" id="password" required>
 
    
     <p>By creating an account you agree to our <a href="#">Terms & Privacy</a>.</p>
-    <button type="submit" class="registerbtn" name="register">Register</button>
+    <button type="submit" class="registerbtn" name="btnRegister">Register</button>
   </div>
 
   <div class="container signin">
