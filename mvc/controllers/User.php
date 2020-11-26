@@ -9,6 +9,9 @@ class User extends Controller {
     }
 
     public function index() {
+        if(isset($_SESSION['user'])) {
+            header("location: http://localhost/php/Home");
+        }
         $this->view("/pages/login");
     }
 
@@ -20,8 +23,15 @@ class User extends Controller {
             if($result) {
                 $_SESSION['user'] = $email;
                 header("location: http://localhost/php/Home");
-            } 
+            } else {
+                header("location: http://localhost/php/User");
+            }
         }
+    }
+
+    public function logout() {
+        session_destroy();
+        header("location: http://localhost/php/User");
     }
 
     public function register() {
