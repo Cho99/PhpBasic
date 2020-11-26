@@ -6,8 +6,10 @@ class Home extends Controller {
         $this->NewsModel = $this->model("NewsModel");
     }
     public function index() {
+       $news = $this->NewsModel->show();
        $this->view("layout", [
-           "page" => "home"
+           "page" => "home",
+           "news" => $news,
         ]);
     }
 }
