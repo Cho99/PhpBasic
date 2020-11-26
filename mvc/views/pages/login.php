@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../public/css/login.css">
+    <link rel="stylesheet" href="http://localhost/php/public/css/login.css">
     <title>Document</title>
 </head>
 <body>
@@ -11,11 +11,6 @@
     <div class="container">
         <div class="imgcontainer">
             <h3>WellCome</h3>
-            <?php 
-                while($row = mysqli_fetch_array($data["news"])){
-                    print_r ($row["title"]);
-                }
-            ?>
         </div> 
         <div class="login">
             <label for="uname"><b>Username</b></label>
@@ -27,6 +22,7 @@
             <button type="submit">Login</button>
             <label>
             <input type="checkbox" checked="checked" name="remember"> Remember me
+            <a href="http://localhost/php/User/register">Dang Ky</a>
             </label>
         </div>
     </div>

@@ -2,7 +2,7 @@
 class App{
 
     protected $controller="Home";
-    protected $action="SayHi";
+    protected $action="index";
     protected $params=[];
 
     function __construct(){
@@ -29,7 +29,6 @@ class App{
 
         // Params
         $this->params = $arr?array_values($arr):[];
-
         call_user_func_array([$this->controller, $this->action], $this->params );
 
     }
