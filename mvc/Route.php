@@ -1,4 +1,3 @@
-
 <?php
 // Process URL from browser
 require_once "./mvc/core/App.php";

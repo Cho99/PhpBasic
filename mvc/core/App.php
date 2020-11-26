@@ -1,6 +1,5 @@
 <?php
 class App{
-
     protected $controller="Home";
     protected $action="index";
     protected $params=[];

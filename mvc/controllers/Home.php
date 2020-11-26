@@ -1,12 +1,9 @@
 <?php
-class Home extends Controller {
-    public $NewModel;
-    
+class Home extends Controller {   
     public function  __construct() {
         //Model
-        $this->NewModel = $this->model("NewModel");
     }
-    function index() {
+    public function index() {
        $this->view("layout", [
            "page" => "home"
         ]);
