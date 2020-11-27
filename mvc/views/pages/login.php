@@ -10,7 +10,7 @@
 <form action="http://localhost/php/User/postLogin" method="POST">
     <div class="container">
         <div class="imgcontainer">
-            <h3>WellCome</h3>
+            <img src="https://sun-asterisk.vn/wp-content/uploads/2019/03/Sun-Logotype-RGB-01.png" alt="sun*">
             <?php if(isset($data["result"])){
                 if($data["result"] == "true") {
                     echo "<h3>Đăng ký thành công<h3/>";
