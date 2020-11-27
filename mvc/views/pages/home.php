@@ -1,7 +1,6 @@
 <div class="table_main">
     <h1>News</h1>
     <a href="http://localhost/php/News/addNew" class="button">Add New</a>
-
     <?php if(isset($data["result"])){
         if($data["result"] == "true") {
             echo "Đăng ký thành công";

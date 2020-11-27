@@ -22,12 +22,18 @@ class User extends Controller {
             $result = $this->UserModel->login($email, $password);
             if($result) {
                 $_SESSION['user'] = $email;
-                if($_POST['remember']) {  
-                    setcookie('user', $email, time() + (86400 * 30));
-                    setcookie('password', $password, time() + (86400 * 30));
+                if(isset($_POST['remember'])) {  
+                    $key = $email."_".$password;
+                    setcookie('key', $key, time() + (86400 * 30), "/"); 
+                }else {
+                    if(isset($_COOKIE['key'])) {
+                        unset($_COOKIE['key']); 
+                        setcookie('key', null, -1, '/');
+                    }
                 }
                 header("location: http://localhost/php/Home");
             } else {
+                $_SESSION['login_error'] = "Tài khoản hoặc mật khẩu không đúng!";
                 header("location: http://localhost/php/User");
             }
         }
@@ -35,15 +41,11 @@ class User extends Controller {
 
     public function logout() {
         session_destroy();
-        if( isset($_COOKIE['user']) && isset($_COOKIE['password']) ) {
-            unset($_COOKIE['user']);
-        }
         header("location: http://localhost/php/User");
     }
+
     public function register() {
-        $this->view("layout", 
-        ["page" => "register"]
-        );
+        $this->view("/pages/register");
     }
 
     public function postRegister() {
@@ -52,6 +54,13 @@ class User extends Controller {
            $username = $_POST["username"];
            $email = $_POST["email"];
            $password = $_POST["password"];
+           $checkEmail = $this->UserModel->checkUser($email);
+           if($checkEmail) {
+             return $this->view("/pages/register", [
+                "result_register" => "Email đã tồn tại"
+             ]);
+           }
+
            // Insert Data 
            $result = $this->UserModel->createUser($username, $password, $email);
            // View

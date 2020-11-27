@@ -1,8 +1,15 @@
 * {box-sizing: border-box}
 
 /* Add padding to containers */
-.container {
-  padding: 16px;
+.container_register {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.register  {
+  max-width: 500px;
 }
 
 /* Full-width input fields */
