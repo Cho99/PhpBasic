@@ -53,8 +53,8 @@ class User extends Controller {
        if(isset($_POST["btnRegister"])) {
             $username = $_POST["username"];
             $email = $_POST["email"];
-            $password = trim($_POST["password"]);
-
+            $password = $_POST["password"];
+          
             // Validate Email
             if(!filter_var($email, FILTER_VALIDATE_EMAIL)) {
                 $_SESSION['error_email'] = "Cần phải là email";              
@@ -67,24 +67,24 @@ class User extends Controller {
                 return header("location: http://localhost/php/User/register");
             }
 
-            // Validate username
-            // if (!preg_match("/^[a-zA-Z-' ]*$/",$username)) {
-            //     $_SESSION['error_username'] = "Tên không được có ký tự đặc biệt";              
-            //     return  header("location: http://localhost/php/User/register");
-            // }
+            //Validate username
+            if (!preg_match("/^[a-zA-Z-' ]*$/",$username)) {
+                $_SESSION['error_username'] = "Tên không được có ký tự đặc biệt";              
+                return  header("location: http://localhost/php/User/register");
+            }
 
             // Validate password
             if((preg_match("/^[a-zA-Z-' ]*$/", $password))) {
                 $_SESSION['error_password'] = "Password không được chứa khoảng trắng và ký tự đặc biệt";     
-                return header("location: http://localhost/php/User/register");
-            }
-            if(strlen($password) <= 8 && strlen($password) >= 5) {
-                $_SESSION['error_password'] = "Password phải trong khoảng 5 đến 8 ký tự";     
-                return  header("location: http://localhost/php/User/register");
+                header("location: http://localhost/php/User/register");
             }
 
+            if(strlen($password) < 8) {
+                $_SESSION['error_password'] = "Mật khẩu ít nhất 8 ký tự";     
+                return  header("location: http://localhost/php/User/register");
+            }
            // Insert Data 
-           $result = $this->UserModel->createUser($username, md5($password), $email);
+           $result = $this->UserModel->createUser($username, $password , $email);
            // View
            header("location: http://localhost/php/User/login");
        }
