@@ -20,6 +20,11 @@ class User extends Controller {
         if(isset($_POST["btnLogin"])) {
             $email = $_POST["email"];
             $password = md5($_POST["password"]);
+
+            if(!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+                $_SESSION["login_error"] = "Cần phải là email"; 
+                return header("location: http://localhost/php/User");             
+            }
             
             $result = $this->UserModel->login($email, $password);
 

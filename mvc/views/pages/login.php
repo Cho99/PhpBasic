@@ -13,25 +13,21 @@
             <img src="https://sun-asterisk.vn/wp-content/uploads/2019/03/Sun-Logotype-RGB-01.png" alt="sun*">
             <?php if(isset($_SESSION['login_error'])){
                 echo "<h4 style='color: red'>".$_SESSION['login_error']."<h4/>";
+                unset($_SESSION["login_error"]);
             } ?>
             <?php 
-                $email = '';
-                $password = '';
                 $check = false;
                 if(isset($_COOKIE['key'])) {
-                    //$key = explode("_",$_COOKIE['key']);
-                   // $email= $key[0];
-                    //$password = $key[1];
                     $check = true;
                 }
             ?>
         </div> 
         <div class="login">
             <label for="email"><b>Email</b></label>
-            <input type="text" placeholder="Enter Email" name="email" value="<?php echo $email ?>" required>
+            <input type="text" placeholder="Enter Email" name="email" value="" required>
 
             <label for="psw"><b>Password</b></label>
-            <input type="password" placeholder="Enter Password" name="password" value="<?php echo $password ?>" required>
+            <input type="password" placeholder="Enter Password" name="password" value="" required>
 
             <button type="submit" name="btnLogin">Login</button>
             <label>
