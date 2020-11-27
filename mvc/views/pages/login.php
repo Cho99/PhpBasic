@@ -13,18 +13,20 @@
             <h3>WellCome</h3>
             <?php if(isset($data["result"])){
                 if($data["result"] == "true") {
-                    echo "Đăng ký thành công";
-                } else {
-                    echo "Đăng ký thất bại";
-                }
+                    echo "<h3>Đăng ký thành công<h3/>";
+                } 
+            } ?>
+            <?php if(isset($_SESSION['login_error'])){
+                echo "<h4 style='color: red'>".$_SESSION['login_error']."<h4/>";
             } ?>
             <?php 
                 $email = '';
                 $password = '';
                 $check = false;
-                if(isset($_COOKIE['user'])|| isset($_COOKIE['password'])) {
-                    $email = $_COOKIE['user'];
-                    $password = $_COOKIE['password'];
+                if(isset($_COOKIE['key'])) {
+                    $key = explode("_",$_COOKIE['key']);
+                    $email= $key[0];
+                    $password = $key[1];
                     $check = true;
                 }
             ?>
