@@ -11,11 +11,6 @@
     <div class="container">
         <div class="imgcontainer">
             <img src="https://sun-asterisk.vn/wp-content/uploads/2019/03/Sun-Logotype-RGB-01.png" alt="sun*">
-            <?php if(isset($data["result"])){
-                if($data["result"] == "true") {
-                    echo "<h3>Đăng ký thành công<h3/>";
-                } 
-            } ?>
             <?php if(isset($_SESSION['login_error'])){
                 echo "<h4 style='color: red'>".$_SESSION['login_error']."<h4/>";
             } ?>
@@ -24,9 +19,9 @@
                 $password = '';
                 $check = false;
                 if(isset($_COOKIE['key'])) {
-                    $key = explode("_",$_COOKIE['key']);
-                    $email= $key[0];
-                    $password = $key[1];
+                    //$key = explode("_",$_COOKIE['key']);
+                   // $email= $key[0];
+                    //$password = $key[1];
                     $check = true;
                 }
             ?>

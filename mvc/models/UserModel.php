@@ -10,6 +10,7 @@ class UserModel extends DB {
     }
 
     public function login($email, $password) {
+        $password = md5($password);
         $qr = "SELECT * FROM users WHERE email = '$email' AND `password` = '$password'";
         $result = mysqli_query($this->con, $qr);
         $row = mysqli_fetch_row($result);
@@ -17,6 +18,17 @@ class UserModel extends DB {
             return true;  
         } 
         return false;
+    }
+
+    public function token($token) {
+        $qr = "UPDATE users 
+        SET token = '$token'
+        WHERE email = '$email'";
+        print_r($token);
+        die;
+        if(mysqli_query($this->con, $qr)) {
+            return true;
+        }
     }
 
     public function checkUser($email) {
