@@ -13,8 +13,21 @@
     <?php require_once "./mvc/views/blocks/header.php" ?>
     <div class="container_main">
         <?php 
-        if(!$_SESSION['user']) {
+        if(!isset($_SESSION['user'])) {
             header('location:http://localhost/php/User/login');
+        }
+        if(isset($_COOKIE['key'])) {
+            $checkCookie = false;
+            foreach($data["users"] as $value) {
+                if($value["token"] == $_COOKIE['key']){
+                    $checkCookie = true;
+                    $_SESSION["user"] = $value['email'];
+                }
+            }
+            if($checkCookie == false) {
+                unset($_SESSION["user"]);
+                header("location: http://localhost/php/User");
+            } 
         }
         require"./mvc/views/pages/".$data["page"].".php" 
         ?>
