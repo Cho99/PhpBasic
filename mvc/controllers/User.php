@@ -7,11 +7,11 @@ class User extends Controller {
     public function __construct() {
         $this->UserModel = $this->model("UserModel");
     }
-
     public function index() {
         if(isset($_SESSION['user'])) {
             header("location: http://localhost/php/Home");
         }
+        //$users = $this->UserModel->show();
         $this->view("/pages/login");
     }
 
@@ -19,7 +19,9 @@ class User extends Controller {
         if(isset($_POST["btnLogin"])) {
             $email = $_POST["email"];
             $password = md5($_POST["password"]);
+            
             $result = $this->UserModel->login($email, $password);
+
             if($result) {
                 $_SESSION['user'] = $email;
                 if(isset($_POST['remember'])) {  
@@ -31,17 +33,23 @@ class User extends Controller {
                         setcookie('key', null, -1, '/');
                     }
                 }
+
                 header("location: http://localhost/php/Home");
+
             } else {
                 $_SESSION['login_error'] = "Tài khoản hoặc mật khẩu không đúng!";
                 header("location: http://localhost/php/User");
             }
         }
     }
-
+    
     public function logout() {
         session_destroy();
-        header("location: http://localhost/php/User");
+        if(isset($_COOKIE['key'])) {
+            unset($_COOKIE['key']); 
+            setcookie('key', null, -1, '/');
+        }
+        header("location:http://localhost/php/User/");
     }
 
     public function register() {
@@ -72,7 +80,7 @@ class User extends Controller {
                 $_SESSION['error_username'] = "Tên không được có ký tự đặc biệt";              
                 return  header("location: http://localhost/php/User/register");
             }
-
+ 
             // Validate password
             if((preg_match("/^[a-zA-Z-' ]*$/", $password))) {
                 $_SESSION['error_password'] = "Password không được chứa khoảng trắng và ký tự đặc biệt";     

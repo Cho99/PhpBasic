@@ -1,5 +1,17 @@
 <?php
 class UserModel extends DB {
+
+    public function show() {
+        $qr = "SELECT * FROM users";
+        $result = mysqli_query($this->con, $qr);
+        $data = mysqli_query($this->con, $qr);
+        $rows = [];
+        while($row = mysqli_fetch_assoc($data)) {
+         array_push($rows,$row);
+        }
+        return $rows;
+    }
+    
     public function createUser($username, $password, $email){
         $token = md5($email.$password);
         $password = md5($password);
@@ -10,6 +22,7 @@ class UserModel extends DB {
         }
         return json_encode($result);
     }
+    
 
     public function login($email, $password) {    
         $qr = "SELECT * FROM users WHERE email = '$email' AND `password` = '$password'";
@@ -25,8 +38,6 @@ class UserModel extends DB {
         $qr = "UPDATE users 
         SET token = '$token'
         WHERE email = '$email'";
-        print_r($token);
-        die;
         if(mysqli_query($this->con, $qr)) {
             return true;
         }
@@ -41,5 +52,15 @@ class UserModel extends DB {
         } 
         return false;
     }
+
+    // public function checkToken($token) {
+    //     $qr = "SELECT * FROM users WHERE token = '$token'";
+    //     $result = mysqli_query($this->con, $qr);
+    //     $row = mysqli_fetch_row($result);
+    //     if($row > 0) {
+    //         return true;  
+    //     } 
+    //     return false;
+    // }
 } 
 ?>
