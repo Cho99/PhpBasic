@@ -25,8 +25,8 @@
                 }
             }
             if($checkCookie == false) {
-                $this->view("/pages/login");
-                return false;
+                unset($_SESSION["user"]);
+                header("location: http://localhost/php/User");
             } 
         }
         require"./mvc/views/pages/".$data["page"].".php" 
