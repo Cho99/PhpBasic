@@ -42,7 +42,7 @@
             echo " <td>". $data['title']."</td> ";
             echo " <td>". $data['content'] ."</td> ";
             echo "<td class='action'>";
-            echo "<div><a href='http://localhost/php/News/'><i class='fa fa-address-book' style='font-size:24px'></i></a></div>";
+            echo "<div><a href='http://localhost/php/News/show/".$data['id']."'><i class='fa fa-address-book' style='font-size:24px'></i></a></div>";
             echo "<div><a href='http://localhost/php/News/edit/".$data['id']."'><i class='fa fa-edit' style='font-size:24px'></i></a></div>";
             echo "<div><a href='http://localhost/php/News/destroy/".$data['id']."'><i class='fa fa-trash' style='font-size:24px'></i></a></div>";
             echo "</td>";

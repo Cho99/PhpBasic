@@ -14,6 +14,18 @@ class News extends Controller {
          ]);
     }
 
+    public function show($id) {
+        $result = $this->NewsModel->getNew($id);
+        if($result) {
+            $this->view("layout",
+                [
+                    "page" => "viewNew",
+                    "new" => $result,
+                ]
+            );
+        }
+    }
+
     public function addNew() {
         $this->view("layout",["page" => "addNew"]);
     }
