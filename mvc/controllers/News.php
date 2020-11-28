@@ -34,6 +34,17 @@ class News extends Controller {
         if(isset($_POST["btn_store"])){
             $title = $_POST["title"];
             $content = $_POST["content"];
+            
+            if(strlen($title) < 5) {
+                $_SESSION['error'] = "Tiêu đề phải có ít nhất 5 ký tự";
+                return header("location: http://localhost/php/News/addNew");
+            }
+
+            if(strlen($content) < 10) {
+                $_SESSION['error'] = "Nội dung không được ngắn quá";
+                return header("location: http://localhost/php/News/addNew");
+            }
+           
             $result =  $this->NewsModel->store($title, $content);
             if($result) {
                 $news = $this->NewsModel->show();
@@ -58,6 +69,33 @@ class News extends Controller {
         $id = $_POST['id'];
         $title = $_POST['title'];
         $content = $_POST['content'];
+
+        if(strlen($title) < 5) {
+            $_SESSION['error'] = "Tiêu đề phải có ít nhất 5 ký tự";
+            $result = $this->NewsModel->getNew($id);
+            if($result) {
+                return $this->view("layout",
+                    [
+                        "page" => "editNew",
+                        "new" => $result,
+                    ]
+                );
+            }
+        }
+
+        if(strlen($content) < 10) {
+            $_SESSION['error'] = "Nội dung không được ngắn quá";
+            $result = $this->NewsModel->getNew($id);
+            if($result) {
+                return $this->view("layout",
+                    [
+                        "page" => "editNew",
+                        "new" => $result,
+                    ]
+                );
+            }
+        }
+
         $result = $this->NewsModel->update($id, $title, $content);
         if($result) {
             $_SESSION["mess"] = "Sửa thành công";

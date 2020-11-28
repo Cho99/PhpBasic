@@ -1,22 +1,10 @@
 <div class="table_main">
     <h1>News</h1>
     <a href="http://localhost/php/News/addNew" class="button">Add New</a>
-    <?php if(isset($data["result_delete"])){
-        if($data["result_delete"] == "true") {
-            echo "Xóa thành công";
-        } else {
-            echo "Xóa thất bại";
-        }
-    } ?>
-
-<?php if(isset($data["result_update"])){
-        if($data["result_update"] == "true") {
-            echo "Sửa thành công";
-        } else {
-            echo "Sửa thất bại";
-        }
-    } ?>
-
+    <?php if(isset($_SESSION["mess"])) {
+        echo "<span style='color: blue; text-align: center; display:block'>".$_SESSION['mess']."</span>";
+        unset($_SESSION['mess']);
+   } ?>
     <table id="news">
         <tr>
             <th style="width: 10%; text-align:center;">ID</th>
