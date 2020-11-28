@@ -5,7 +5,7 @@
             $title = $data['new']['title'];
             $content = $data['new']['content'];
         ?>
-        <h2 style="text-align:center">Sửa Bai Viet</h2>
+        <h2 style="text-align:center">Edit New</h2>
         <form action="http://localhost/php/News/editNew" method="POST">
             <input type="hidden" name="id" value="<?= $id ?>" > 
             <label for="title">Title</label>
