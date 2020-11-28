@@ -31,7 +31,7 @@ class User extends Controller {
             if($result) {
                 $_SESSION['user'] = $email;
                 if(isset($_POST['remember'])) {  
-                    $key = md5($email.$password);
+                    $key = md5($email.$_POST['password']);
                     setcookie('key', $key, time() + (86400 * 30), "/"); 
                 }else {
                     if(isset($_COOKIE['key'])) {
