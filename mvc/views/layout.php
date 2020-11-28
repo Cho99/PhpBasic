@@ -20,8 +20,8 @@
             $checkCookie = false;
             foreach($data["users"] as $value) {
                 if($value["token"] == $_COOKIE['key']){
-                    $checkCookie = true;
                     $_SESSION["user"] = $value['email'];
+                    $checkCookie = true;
                 }
             }
             if($checkCookie == false) {
