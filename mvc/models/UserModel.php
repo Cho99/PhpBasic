@@ -52,15 +52,5 @@ class UserModel extends DB {
         } 
         return false;
     }
-
-    // public function checkToken($token) {
-    //     $qr = "SELECT * FROM users WHERE token = '$token'";
-    //     $result = mysqli_query($this->con, $qr);
-    //     $row = mysqli_fetch_row($result);
-    //     if($row > 0) {
-    //         return true;  
-    //     } 
-    //     return false;
-    // }
 } 
 ?>
