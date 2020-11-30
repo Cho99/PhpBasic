@@ -19,7 +19,7 @@ class User extends Controller {
 
     public function postLogin() {
         if(isset($_POST["btnLogin"])) {
-            $email = $_POST["email"];
+            $email = htmlspecialchars($_POST["email"]);
             $password = md5($_POST["password"]);
 
             if(!filter_var($email, FILTER_VALIDATE_EMAIL)) {
@@ -68,9 +68,9 @@ class User extends Controller {
     public function postRegister() {
        // Lay du lieu tu` form nhap
        if(isset($_POST["btnRegister"])) {
-            $username = $_POST["username"];
-            $email = $_POST["email"];
-            $password = $_POST["password"];
+            $username = htmlspecialchars($_POST["username"]);
+            $email = htmlspecialchars(($_POST["email"]));
+            $password = htmlspecialchars(($_POST["password"]));
           
             // Validate Email
             if(!filter_var($email, FILTER_VALIDATE_EMAIL)) {

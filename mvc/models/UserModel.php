@@ -34,14 +34,14 @@ class UserModel extends DB {
         return false;
     }
 
-    public function token($token) {
-        $qr = "UPDATE users 
-        SET token = '$token'
-        WHERE email = '$email'";
-        if(mysqli_query($this->con, $qr)) {
-            return true;
-        }
-    }
+    // public function token($token) {
+    //     $qr = "UPDATE users 
+    //     SET token = '$token'
+    //     WHERE email = '$email'";
+    //     if(mysqli_query($this->con, $qr)) {
+    //         return true;
+    //     }
+    // }
 
     public function checkUser($email) {
         $qr = "SELECT * FROM users WHERE email = '$email'";

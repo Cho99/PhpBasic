@@ -27,7 +27,7 @@
             <input type="text" placeholder="Enter Email" name="email" value="" required>
 
             <label for="psw"><b>Password</b></label>
-            <input type="password" placeholder="Enter Password" name="password" value="" required>
+            <input type="password" placeholder="Enter Password" name="password" value="" size="20" maxlength="" required>
 
             <button type="submit" name="btnLogin">Login</button>
             <label>
