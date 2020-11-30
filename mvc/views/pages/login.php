@@ -32,7 +32,7 @@
             <button type="submit" name="btnLogin">Login</button>
             <label>
             <input <?php echo $check?"checked":"" ?> type="checkbox" name="remember" value="1"> Remember me
-            <a href="http://localhost/php/User/register">Đăng Ký</a>
+            <a href="http://localhost/php/User/register">Sign Up</a>
             </label>
         </div>
     </div>

@@ -7,6 +7,7 @@ class User extends Controller {
     public function __construct() {
         $this->UserModel = $this->model("UserModel");
     }
+
     public function index() {
         if(isset($_SESSION['user'])) {
             header("location: http://localhost/php/Home");
@@ -29,9 +30,13 @@ class User extends Controller {
             $result = $this->UserModel->login($email, $password);
 
             if($result) {
+                //Xet sesssion user
                 $_SESSION['user'] = $email;
+
                 if(isset($_POST['remember'])) {  
                     $key = md5($email.$_POST['password']);
+
+                    // set cookie voi khoang thoi gian la` 1 ngay
                     setcookie('key', $key, time() + (86400 * 30), "/"); 
                 }else {
                     if(isset($_COOKIE['key'])) {
@@ -39,9 +44,7 @@ class User extends Controller {
                         setcookie('key', null, -1, '/');
                     }
                 }
-
                 header("location: http://localhost/php/Home");
-
             } else {
                 $_SESSION['login_error'] = "Tài khoản hoặc mật khẩu không đúng!";
                 header("location: http://localhost/php/User");
