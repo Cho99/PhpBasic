@@ -1,7 +1,7 @@
 <?php
  class NewsModel extends DB {
     public function show() {
-       $qr = "SELECT * FROM news";
+       $qr = "SELECT * FROM news ORDER BY id DESC";
        $data = mysqli_query($this->con, $qr);
        $rows = [];
        while($row = mysqli_fetch_assoc($data)) {

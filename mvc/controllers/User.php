@@ -21,7 +21,7 @@ class User extends Controller {
         if(isset($_POST["btnLogin"])) {
             $email = htmlspecialchars($_POST["email"]);
             $password = md5($_POST["password"]);
-
+            $email = trim(htmlspecialchars(($_POST["email"])));
             if(!filter_var($email, FILTER_VALIDATE_EMAIL)) {
                 $_SESSION["login_error"] = "Cần phải là email"; 
                 return header("location: http://localhost/php/User");             
@@ -68,8 +68,9 @@ class User extends Controller {
     public function postRegister() {
        // Lay du lieu tu` form nhap
        if(isset($_POST["btnRegister"])) {
-            $username = htmlspecialchars($_POST["username"]);
-            $email = htmlspecialchars(($_POST["email"]));
+            $username = trim($_POST["username"]);
+            $username = htmlspecialchars($username);
+            $email = trim(htmlspecialchars(($_POST["email"])));
             $password = str_replace(' ','', $_POST['password']);
             $password = htmlspecialchars($password);
             // Validate Email
