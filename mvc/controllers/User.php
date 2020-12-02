@@ -71,10 +71,10 @@ class User extends Controller {
             $username = htmlspecialchars($_POST["username"]);
             $email = htmlspecialchars(($_POST["email"]));
             $password = htmlspecialchars(($_POST["password"]));
-          
+
             // Validate Email
             if(!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-                $_SESSION['error_email'] = "Cần phải là email";              
+                $_SESSION['error_email'] = "Cần phải là email"; 
                 return header("location: http://localhost/php/User/register");
             }
 
@@ -102,7 +102,13 @@ class User extends Controller {
             }
            // Insert Data 
            $result = $this->UserModel->createUser($username, $password , $email);
+    
            // View
+           if($result == true) {
+               $_SESSION['mess'] = "Đăng ký tài khoản thành công";
+           }else {
+               $_SESSION['mess'] = "Đăng ký tài khoản thất bại";
+           }
            header("location: http://localhost/php/User/login");
        }
     }

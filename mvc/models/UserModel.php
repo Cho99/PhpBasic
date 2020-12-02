@@ -20,7 +20,7 @@ class UserModel extends DB {
         if(mysqli_query($this->con, $qr) ) {
             $result = true;
         }
-        return json_encode($result);
+        return $result;
     }
     
 
