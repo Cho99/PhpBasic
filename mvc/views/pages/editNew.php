@@ -18,7 +18,12 @@
             ?>
             <label for="content">Content</label>
             <textarea id="subject" name="content" placeholder="Write something.." style="height:200px" required><?= $content  ?></textarea>
-
+            <?php
+                if(isset($_SESSION['error_content'])) {
+                    echo "<span style='color: red; text-align: center; display:block; margin-bottom: 5px; font-size: 15px;'>".$_SESSION['error_content']."</span>";
+                    unset($_SESSION['error_content']);
+                }
+            ?>
             <button  type="submit" value="Submit" name="btn_store">Edit</button>
         </form>
     </div>

@@ -69,9 +69,32 @@ class News extends Controller {
         $id = $_POST['id'];
         $title = htmlspecialchars($_POST['title']);
         $content = htmlspecialchars($_POST['content']);
-
-        if(strlen($title) < 5) {
+        if(trim($title) == '') {
+            $_SESSION['error'] = "Tiêu đề không được để trống";
+            $result = $this->NewsModel->getNew($id);
+            if($result) {
+                return $this->view("layout",
+                    [
+                        "page" => "editNew",
+                        "new" => $result,
+                    ]
+                );
+            }
+        }
+        if(strlen($title) < 5 ) {
             $_SESSION['error'] = "Tiêu đề phải có ít nhất 5 ký tự";
+            $result = $this->NewsModel->getNew($id);
+            if($result) {
+                return $this->view("layout",
+                    [
+                        "page" => "editNew",
+                        "new" => $result,
+                    ]
+                );
+            }
+        }
+        if(trim($content) == '') {
+            $_SESSION['error_content'] = "Nội dung không được để trống";
             $result = $this->NewsModel->getNew($id);
             if($result) {
                 return $this->view("layout",
@@ -84,7 +107,7 @@ class News extends Controller {
         }
 
         if(strlen($content) < 10) {
-            $_SESSION['error'] = "Nội dung không được ngắn quá";
+            $_SESSION['error_content'] = "Nội dung không được ngắn quá";
             $result = $this->NewsModel->getNew($id);
             if($result) {
                 return $this->view("layout",
