@@ -3,7 +3,6 @@ class UserModel extends DB {
 
     public function show() {
         $qr = "SELECT * FROM users";
-        $result = mysqli_query($this->con, $qr);
         $data = mysqli_query($this->con, $qr);
         $rows = [];
         while($row = mysqli_fetch_assoc($data)) {
