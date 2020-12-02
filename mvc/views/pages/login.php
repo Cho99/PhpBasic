@@ -15,6 +15,10 @@
                 echo "<h4 style='color: red'>".$_SESSION['login_error']."<h4/>";
                 unset($_SESSION["login_error"]);
             } ?>
+             <?php if(isset($_SESSION['mess'])){
+                echo "<h4 style='color: red'>".$_SESSION['mess']."<h4/>";
+                unset($_SESSION["mess"]);
+            } ?>
             <?php 
                 $check = false;
                 if(isset($_COOKIE['key'])) {
