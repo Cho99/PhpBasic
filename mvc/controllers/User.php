@@ -70,8 +70,8 @@ class User extends Controller {
        if(isset($_POST["btnRegister"])) {
             $username = htmlspecialchars($_POST["username"]);
             $email = htmlspecialchars(($_POST["email"]));
-            $password = htmlspecialchars(($_POST["password"]));
-
+            $password = str_replace(' ','', $_POST['password']);
+            $password = htmlspecialchars($password);
             // Validate Email
             if(!filter_var($email, FILTER_VALIDATE_EMAIL)) {
                 $_SESSION['error_email'] = "Cần phải là email"; 
@@ -89,11 +89,17 @@ class User extends Controller {
                 $_SESSION['error_username'] = "Tên không được có ký tự đặc biệt";              
                 return  header("location: http://localhost/php/User/register");
             }
- 
-            // Validate password
-            if((preg_match("/^[a-zA-Z-' ]*$/", $password))) {
-                $_SESSION['error_password'] = "Password không được chứa khoảng trắng và ký tự đặc biệt";     
-                header("location: http://localhost/php/User/register");
+
+             //Validate username
+            if (trim($username) == '') {
+                $_SESSION['error_username'] = "Tên không được để trống";              
+                return  header("location: http://localhost/php/User/register");
+            }
+
+            //Validate username
+            if (trim($password) == '') {
+                $_SESSION['error_password'] = "Mật khẩu không được để trống";              
+                return  header("location: http://localhost/php/User/register");
             }
 
             if(strlen($password) < 8) {
