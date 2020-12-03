@@ -11,9 +11,7 @@ class User extends Controller {
     public function index() {
         if(isset($_SESSION['user'])) {
             header("location: http://localhost/php/Home");
-            //$this->view("pages/home");
         }
-        //$users = $this->UserModel->show();
         $this->view("/pages/login");
     }
 

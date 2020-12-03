@@ -2,6 +2,12 @@
     margin-top: 40px;
 }
 
+a.button {
+    text-decoration: none;
+    border: 1px solid;
+    padding: 2px;
+}
+
 td.content {
     width: 500px;
     overflow: hidden;
