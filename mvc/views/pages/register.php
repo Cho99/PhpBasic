@@ -13,18 +13,26 @@
           <h1 style="text-align:center">Register</h1>
           <hr>
           <label for="email"><b>Email</b></label>
-          <input type="text" placeholder="Enter Email" name="email" id="email" required>
+          <input type="text" placeholder="Enter Email" name="email" id="email" value="<?= isset($_SESSION['old_email']) ? $_SESSION['old_email'] : '' ?>" required>
           
           <?php if(isset($_SESSION["error_email"])) {
               echo "<span style='color: red; text-align: center; display:block'>".$_SESSION['error_email']."</span>";
               unset($_SESSION['error_email']);
           } ?>
+
+          <?php if(isset($_SESSION['old_email'])) {
+              unset($_SESSION['old_email']);
+          } ?>
           <label for="username"><b>UserName</b></label>
-          <input type="text" placeholder="UserName" name="username" id="username" required>
+          <input type="text" placeholder="UserName" name="username" id="username" value="<?= isset($_SESSION['old_username']) ? $_SESSION['old_username'] : '' ?>" required>
 
           <?php if(isset($_SESSION["error_username"])) {
               echo "<span style='color: red; text-align: center; display:block'>".$_SESSION['error_username']."</span>";
               unset($_SESSION['error_username']);
+          } ?>
+
+          <?php if(isset($_SESSION['old_username'])) {
+              unset($_SESSION['old_username']);
           } ?>
            
           <label for="password"><b>Password</b></label>

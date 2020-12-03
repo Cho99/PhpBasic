@@ -75,25 +75,30 @@ class User extends Controller {
             $password = htmlspecialchars($password);
             // Validate Email
             if(!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-                $_SESSION['error_email'] = "Cần phải là email"; 
+                $_SESSION['error_email'] = "Cần phải là email";
+                $_SESSION['old_email'] = $email; 
                 return header("location: http://localhost/php/User/register");
             }
 
             $checkEmail = $this->UserModel->checkUser($email);
             if($checkEmail) {
-                $_SESSION['error_email'] = "Email đã tồn tại";     
+                $_SESSION['error_email'] = "Email đã tồn tại";
+                $_SESSION['old_email'] = $email;  
+                $_SESSION['old_username'] = $username;    
                 return header("location: http://localhost/php/User/register");
             }
 
             //Validate username
             if (!preg_match("/^[a-zA-Z0-9' ]*$/",$username)) {
-                $_SESSION['error_username'] = "Tên không được có ký tự đặc biệt";              
+                $_SESSION['error_username'] = "Tên không được có ký tự đặc biệt";  
+                $_SESSION['old_email'] = $email;  
+                $_SESSION['old_username'] = $username;            
                 return  header("location: http://localhost/php/User/register");
             }
 
              //Validate username
             if (trim($username) == '') {
-                $_SESSION['error_username'] = "Tên không được để trống";              
+                $_SESSION['error_username'] = "Tên không được để trống";
                 return  header("location: http://localhost/php/User/register");
             }
 
