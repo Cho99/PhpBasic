@@ -2,13 +2,29 @@
     margin-top: 40px;
 }
 
-td {
-   text-align: center;
+td.content {
+    width: 500px;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
+
+div.title:hover {
+    overflow: visible;
+}
+
+div.content:hover {
+    overflow: visible;
+}
+
+td {
+    text-align: center;
+}
+
 td.action {
     display: flex;
     justify-content: space-evenly;
 }
+
 h1 {
     text-align: center;
     margin-bottom: 20px;
@@ -18,17 +34,18 @@ h1 {
     font-family: Arial, Helvetica, sans-serif;
     border-collapse: collapse;
     width: 100%;
-  }
-  
-  #news td, #news th {
+}
+
+#news td,
+#news th {
     border: 1px solid #ddd;
     padding: 8px;
-  }
-  
-  #news th {
+}
+
+#news th {
     padding-top: 12px;
     padding-bottom: 12px;
     text-align: left;
     background-color: #4CAF50;
     color: white;
-  }
+}

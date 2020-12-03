@@ -32,8 +32,8 @@ class News extends Controller {
 
     public function store() {
         if(isset($_POST["btn_store"])){
-            $title = htmlspecialchars($_POST["title"]);
-            $content = htmlspecialchars($_POST["content"]);
+            $title = trim(htmlspecialchars($_POST["title"]));
+            $content = trim(htmlspecialchars($_POST["content"]));
             
             if(strlen($title) < 5) {
                 $_SESSION['error'] = "Tiêu đề phải có ít nhất 5 ký tự";
@@ -67,8 +67,8 @@ class News extends Controller {
 
     public function editNew() {
         $id = $_POST['id'];
-        $title = htmlspecialchars($_POST['title']);
-        $content = htmlspecialchars($_POST['content']);
+        $title = trim(htmlspecialchars($_POST['title']));
+        $content = trim(htmlspecialchars($_POST['content']));
         if(trim($title) == '') {
             $_SESSION['error'] = "Tiêu đề không được để trống";
             $result = $this->NewsModel->getNew($id);

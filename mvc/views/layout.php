@@ -34,3 +34,9 @@
     </div>
 </body>
 </html>
+
+<script type="text/javascript">
+function confirm_delete() {
+  return confirm('are you sure?');
+}
+</script>
