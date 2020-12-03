@@ -18,12 +18,12 @@
         <?php foreach($news as $data) {
             echo " <tr> ";
             echo " <td> ".$data['id']."</td>";
-            echo " <td>". $data['title']."</td> ";
-            echo " <td>". $data['content'] ."</td> ";
+            echo " <td><div class='title' style=' white-space: nowrap; width: 250px;overflow: hidden; text-overflow: ellipsis;'>". $data['title']."</div></td> ";
+            echo " <td><div class='content' style='white-space: nowrap; width: 400px;overflow: hidden; text-overflow: ellipsis;'>". $data['content'] ."</div></td> ";
             echo "<td class='action'>";
-            echo "<div><a href='http://localhost/php/News/show/".$data['id']."'><i class='fa fa-address-book' style='font-size:24px'></i></a></div>";
-            echo "<div><a href='http://localhost/php/News/edit/".$data['id']."'><i class='fa fa-edit' style='font-size:24px'></i></a></div>";
-            echo "<div><a href='http://localhost/php/News/destroy/".$data['id']."'><i class='fa fa-trash' style='font-size:24px'></i></a></div>";
+            echo "<div><a href='http://localhost/php/News/show/".$data['id']."'><i class='fa fa-address-book' style='font-size:24px' title='Show Detail'></i></a></div>";
+            echo "<div><a href='http://localhost/php/News/edit/".$data['id']."'><i class='fa fa-edit' style='font-size:24px' title='Edit New'></i></a></div>";
+            echo "<div><a href='http://localhost/php/News/destroy/".$data['id']."'><i  onclick='return confirm_delete()' class='fa fa-trash' style='font-size:24px' title='Delete New'></i></a></div>";
             echo "</td>";
             echo "</tr>";     
         } ?>
