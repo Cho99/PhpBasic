@@ -86,7 +86,7 @@ class User extends Controller {
             }
 
             //Validate username
-            if (!preg_match("/^[a-zA-Z-' ]*$/",$username)) {
+            if (!preg_match("/^[a-zA-Z0-9' ]*$/",$username)) {
                 $_SESSION['error_username'] = "Tên không được có ký tự đặc biệt";              
                 return  header("location: http://localhost/php/User/register");
             }
