@@ -69,7 +69,7 @@ class User extends Controller {
             $username = trim($_POST["username"]);
             $username = htmlspecialchars($username);
             $email = trim(htmlspecialchars(($_POST["email"])));
-            $password = str_replace(' ','', $_POST['password']);
+            $password = trim(str_replace(' ','', $_POST['password']));
             $password = htmlspecialchars($password);
             // Validate Email
             if(!filter_var($email, FILTER_VALIDATE_EMAIL)) {
