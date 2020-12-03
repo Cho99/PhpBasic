@@ -87,6 +87,8 @@ class News extends Controller {
         }
         if(strlen($title) < 5 ) {
             $_SESSION['error'] = "Tiêu đề phải có ít nhất 5 ký tự";
+            $_SESSION['old_title'] = $title;
+            $_SESSION['old_content'] = $content;
             $result = $this->NewsModel->getNew($id);
             if($result) {
                 return $this->view("layout",
@@ -112,6 +114,8 @@ class News extends Controller {
 
         if(strlen($content) < 10) {
             $_SESSION['error_content'] = "Nội dung không được ngắn quá";
+            $_SESSION['old_title'] = $title;
+            $_SESSION['old_content'] = $content;
             $result = $this->NewsModel->getNew($id);
             if($result) {
                 return $this->view("layout",
