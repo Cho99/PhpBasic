@@ -1,11 +1,10 @@
 <?php
-// Process URL from browser
+// Xử lý URL từ trình duyệt
 require_once "./mvc/core/App.php";
 
-// How controllers call Views & Models
+// Gọi model với view từ controller 
 require_once "./mvc/core/Controller.php";
 
-// Database connection
-
+// Kết nối cơ sở dữ liệu
 require_once "./mvc/core/DB.php";
 ?>

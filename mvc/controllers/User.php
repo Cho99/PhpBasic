@@ -28,14 +28,14 @@ class User extends Controller {
             $result = $this->UserModel->login($email, $password);
 
             if($result) {
-                //Xet sesssion user
+                //Xet session user
                 $_SESSION['user'] = $email;
 
                 if(isset($_POST['remember'])) {  
                     $key = md5($email.$_POST['password']);
 
                     // set cookie voi khoang thoi gian la` 1 ngay
-                    setcookie('key', $key, time() + (86400 * 30), "/"); 
+                    setcookie('key', $key, time() + (86400 * 15), "/"); 
                 }else {
                     if(isset($_COOKIE['key'])) {
                         unset($_COOKIE['key']); 
