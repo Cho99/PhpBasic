@@ -34,7 +34,7 @@ class User extends Controller {
                 if(isset($_POST['remember'])) {  
                     $key = md5($email.$_POST['password']);
 
-                    // set cookie voi khoang thoi gian la` 1 ngay
+                    // set cookie voi khoang thoi gian la` 15 ngay, 86400 = 1day
                     setcookie('key', $key, time() + (86400 * 15), "/"); 
                 }else {
                     if(isset($_COOKIE['key'])) {
