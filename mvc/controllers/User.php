@@ -11,9 +11,7 @@ class User extends Controller {
     public function index() {
         if(isset($_SESSION['user'])) {
             header("location: http://localhost/php/Home");
-            //$this->view("pages/home");
         }
-        //$users = $this->UserModel->show();
         $this->view("/pages/login");
     }
 
@@ -30,14 +28,14 @@ class User extends Controller {
             $result = $this->UserModel->login($email, $password);
 
             if($result) {
-                //Xet sesssion user
+                //Xet session user
                 $_SESSION['user'] = $email;
 
                 if(isset($_POST['remember'])) {  
                     $key = md5($email.$_POST['password']);
 
-                    // set cookie voi khoang thoi gian la` 1 ngay
-                    setcookie('key', $key, time() + (86400 * 30), "/"); 
+                    // set cookie voi khoang thoi gian la` 15 ngay, 86400 = 1day
+                    setcookie('key', $key, time() + (86400 * 15), "/"); 
                 }else {
                     if(isset($_COOKIE['key'])) {
                         unset($_COOKIE['key']); 
@@ -71,7 +69,7 @@ class User extends Controller {
             $username = trim($_POST["username"]);
             $username = htmlspecialchars($username);
             $email = trim(htmlspecialchars(($_POST["email"])));
-            $password = str_replace(' ','', $_POST['password']);
+            $password = trim(str_replace(' ','', $_POST['password']));
             $password = htmlspecialchars($password);
             // Validate Email
             if(!filter_var($email, FILTER_VALIDATE_EMAIL)) {

@@ -26,6 +26,8 @@
             }
             if($checkCookie == false) {
                 unset($_SESSION["user"]);
+                unset($_COOKIE['key']); 
+                setcookie('key', null, -1, '/');
                 header("location: http://localhost/php/User");
             } 
         }

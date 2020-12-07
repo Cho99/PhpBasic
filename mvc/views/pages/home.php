@@ -1,11 +1,11 @@
 <div class="table_main">
     <h1>News</h1>
-    <a href="http://localhost/php/News/addNew" class="button">Add New</a>
+    <a href="http://localhost/php/News/addNew" class="button" style="text-decoration: none; border: 1px solid;padding: 2px;">Add New <i class="fa fa-plus-circle"></i></a>
     <?php if(isset($_SESSION["mess"])) {
         echo "<span style='color: blue; text-align: center; display:block'>".$_SESSION['mess']."</span>";
         unset($_SESSION['mess']);
    } ?>
-    <table id="news">
+    <table id="news" style="margin-top: 5px;">
         <tr>
             <th style="width: 10%; text-align:center;">ID</th>
             <th style="width: 250px; text-align:center;">Title</th>
@@ -18,7 +18,7 @@
         <?php foreach($news as $data) {
             echo " <tr> ";
             echo " <td> ".$data['id']."</td>";
-            echo " <td><div class='title' style=' white-space: nowrap; width: 250px;overflow: hidden; text-overflow: ellipsis;'>". $data['title']."</div></td> ";
+            echo " <td><div class='title' style='white-space: nowrap; width: 250px;overflow: hidden; text-overflow: ellipsis;'>". $data['title']."</div></td> ";
             echo " <td><div class='content' style='white-space: nowrap; width: 400px;overflow: hidden; text-overflow: ellipsis;'>". $data['content'] ."</div></td> ";
             echo "<td class='action'>";
             echo "<div><a href='http://localhost/php/News/show/".$data['id']."'><i class='fa fa-address-book' style='font-size:24px' title='Show Detail'></i></a></div>";
@@ -27,6 +27,5 @@
             echo "</td>";
             echo "</tr>";     
         } ?>
-       
     </table>
 </div>
