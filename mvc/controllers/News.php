@@ -3,6 +3,9 @@ class News extends Controller {
     public $NewsModel;
     public function  __construct() {
         //Model
+        if(!isset($_SESSION['user'])) {
+            return header("location: http://localhost/php/User/login");
+        }
         $this->NewsModel = $this->model("NewsModel");
     }
 
