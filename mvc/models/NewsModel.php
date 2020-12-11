@@ -27,9 +27,12 @@
     }
 
     public function update($id, $title, $content) {
+  
        $qr = "UPDATE news 
        SET title = '$title', content = '$content' 
-       WHERE id = '$id'";
+       WHERE id = $id'";
+      //  echo $qr;
+      //  die;
         $result = false;
         if(mysqli_query($this->con, $qr)) {
            return $result = true;

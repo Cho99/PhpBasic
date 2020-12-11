@@ -22,7 +22,6 @@ class UserModel extends DB {
         return $result;
     }
     
-
     public function login($email, $password) {    
         $qr = "SELECT * FROM users WHERE email = '$email' AND `password` = '$password'";
         $result = mysqli_query($this->con, $qr);

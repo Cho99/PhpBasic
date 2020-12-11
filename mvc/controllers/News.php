@@ -45,6 +45,13 @@ class News extends Controller {
                 return header("location: http://localhost/php/News/addNew");
             }
 
+            if(strlen($title) > 200) {
+                $_SESSION['error'] = "Tiêu đề phải không quá 200 ký tự";
+                $_SESSION['old_title'] = $title;
+                $_SESSION['old_content'] = $content;
+                return header("location: http://localhost/php/News/addNew");
+            }
+
             if(strlen($content) < 10) {
                 $_SESSION['error'] = "Nội dung không được ngắn quá";
                 $_SESSION['old_title'] = $title;
@@ -146,9 +153,10 @@ class News extends Controller {
     public function destroy($id) {
         $result = $this->NewsModel->destroy($id);
         if($result) {
-            $_SESSION["mess"] = "Xóa bài đăng thất bại";
-        } else {
             $_SESSION["mess"] = "Xóa bài đăng thành công";
+          
+        } else {
+            $_SESSION["mess"] = "Xóa bài đăng thất bại";
         }
         header("location: http://localhost/php/Home");
     }
