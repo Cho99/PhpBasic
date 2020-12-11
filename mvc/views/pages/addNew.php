@@ -1,6 +1,12 @@
 <div class="container_addNew">
     <div class="addNew">
         <h2 style="text-align:center">Add New</h2>
+        <?php
+            if(isset($_SESSION['mess_error'])) {
+                echo "<span style='color: red; text-align: center; display:block; margin-bottom: 5px; font-size: 15px;'>".$_SESSION['mess_error']."</span>";
+                unset($_SESSION['mess_error']);
+            }
+        ?>
         <form action="http://localhost/php/News/store" method="POST">
             <label for="title">Title</label>
             <input type="text" id="title" name="title" value="<?php echo (isset($_SESSION['old_title']) ? $_SESSION['old_title'] : '');  ?>" required>

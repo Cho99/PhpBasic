@@ -54,7 +54,11 @@ class News extends Controller {
 
             $result =  $this->NewsModel->store($title, $content);
             if($result) {
-                $news = $this->NewsModel->show();
+                //$news = $this->NewsModel->show();
+                $_SESSION['mess'] = "Thêm bài đăng thành công";
+                header("location: http://localhost/php/Home");
+            }else {
+                $_SESSION['mess_error'] = "Thêm bài đăng thất bại";
                 header("location: http://localhost/php/Home");
             }
         }
@@ -132,20 +136,21 @@ class News extends Controller {
        
         $result = $this->NewsModel->update($id, $title, $content);
         if($result) {
-            $_SESSION["mess"] = "Sửa thành công";
-            header("location: http://localhost/php/Home");
+            $_SESSION["mess"] = "Sửa bài đăng thành công";
         }else {
-            $_SESSION["mess"] = "Sửa thất bại";
-            header("location: http://localhost/php/Home");
+            $_SESSION["mess"] = "Sửa bài đăng thất bại";
         }
+        header("location: http://localhost/php/Home");
     }
 
     public function destroy($id) {
         $result = $this->NewsModel->destroy($id);
         if($result) {
-            $_SESSION["mess"] = "Xóa thành công";
-            header("location: http://localhost/php/Home");
+            $_SESSION["mess"] = "Xóa bài đăng thất bại";
+        } else {
+            $_SESSION["mess"] = "Xóa bài đăng thành công";
         }
+        header("location: http://localhost/php/Home");
     }
 }
 ?>
